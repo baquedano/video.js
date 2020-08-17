@@ -3181,7 +3181,7 @@ class Player extends Component {
     // show an error
     if (!sources.length) {
       this.setTimeout(function() {
-        this.error({ code: 4, message: this.localize(this.options_.notSupportedMessage) });
+        this.error({ code: 4, message: this.localize(this.options_.emptySource) });
       }, 0);
       return;
     }
@@ -3212,7 +3212,7 @@ class Player extends Component {
 
         // We need to wrap this in a timeout to give folks a chance to add error event handlers
         this.setTimeout(function() {
-          this.error({ code: 4, message: this.localize(this.options_.notSupportedMessage) });
+          this.error({ code: 4, message: this.localize(this.options_.notSupportedMessage + " " + JSON.stringify(err)) });
         }, 0);
 
         // we could not find an appropriate tech, but let's still notify the delegate that this is it
