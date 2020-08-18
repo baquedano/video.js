@@ -24271,7 +24271,7 @@
           }
 
           _this13.changingSrc_ = false;
-          var errMessage = JSON.stringify(sources) + ' ' + JSON.stringify(middlewareSource); // We need to wrap this in a timeout to give folks a chance to add error event handlers
+          var errMessage = JSON.stringify(err) + ' ' + JSON.stringify(middlewareSource); // We need to wrap this in a timeout to give folks a chance to add error event handlers
 
           _this13.setTimeout(function () {
             this.error({
@@ -24311,7 +24311,7 @@
       var sourceTech = this.selectSource([source]);
 
       if (!sourceTech) {
-        return true;
+        return 'No Source';
       }
 
       if (!titleCaseEquals(sourceTech.tech, this.techName_)) {

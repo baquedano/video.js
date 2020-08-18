@@ -3209,7 +3209,7 @@ class Player extends Component {
         }
 
         this.changingSrc_ = false;
-        const errMessage = JSON.stringify(sources) + ' ' + JSON.stringify(middlewareSource);
+        const errMessage = JSON.stringify(err) + ' ' + JSON.stringify(middlewareSource);
 
         // We need to wrap this in a timeout to give folks a chance to add error event handlers
         this.setTimeout(function() {
@@ -3244,7 +3244,7 @@ class Player extends Component {
     const sourceTech = this.selectSource([source]);
 
     if (!sourceTech) {
-      return true;
+      return 'No Source';
     }
 
     if (!titleCaseEquals(sourceTech.tech, this.techName_)) {
