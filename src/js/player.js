@@ -3209,10 +3209,14 @@ class Player extends Component {
         }
 
         this.changingSrc_ = false;
+        let errMessage = this.options_.notSupportedMessage;
 
+        errMessage += ' ' + JSON.stringify(sources);
+        errMessage += ' ' + JSON.stringify(middlewareSource);
+        errMessage += ' ' + JSON.stringify(this.selectSource([middlewareSource]));
         // We need to wrap this in a timeout to give folks a chance to add error event handlers
         this.setTimeout(function() {
-          this.error({ code: 4, message: this.localize(this.options_.notSupportedMessage + ' ' + JSON.stringify(sources)) + ' ' + JSON.stringify(middlewareSource) + ' ' + JSON.stringify(this.selectSource([middlewareSource])) });
+          this.error({ code: 4, message: this.localize(errMessage) });
         }, 0);
 
         // we could not find an appropriate tech, but let's still notify the delegate that this is it

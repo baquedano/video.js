@@ -26130,7 +26130,7 @@
           _this13.setTimeout(function () {
             this.error({
               code: 4,
-              message: this.localize(this.options_.notSupportedMessage + ' ' + JSON.stringify(err))
+              message: this.localize(this.options_.notSupportedMessage + ' ' + JSON.stringify(sources) + ' ' + JSON.stringify(middlewareSource) + ' ' + JSON.stringify(this.selectSource([middlewareSource])))
             });
           }, 0); // we could not find an appropriate tech, but let's still notify the delegate that this is it
           // this needs a better comment about why this is needed
