@@ -24270,12 +24270,13 @@
             return _this13.src(sources.slice(1));
           }
 
-          _this13.changingSrc_ = false; // We need to wrap this in a timeout to give folks a chance to add error event handlers
+          _this13.changingSrc_ = false;
+          var errMessage = JSON.stringify(sources) + ' ' + JSON.stringify(middlewareSource); // We need to wrap this in a timeout to give folks a chance to add error event handlers
 
           _this13.setTimeout(function () {
             this.error({
               code: 4,
-              message: this.localize(this.options_.notSupportedMessage + ' ' + JSON.stringify(sources) + ' ' + JSON.stringify(middlewareSource) + ' ' + JSON.stringify(this.selectSource([middlewareSource])))
+              message: this.localize(errMessage)
             });
           }, 0); // we could not find an appropriate tech, but let's still notify the delegate that this is it
           // this needs a better comment about why this is needed

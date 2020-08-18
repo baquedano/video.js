@@ -3209,11 +3209,8 @@ class Player extends Component {
         }
 
         this.changingSrc_ = false;
-        let errMessage = this.options_.notSupportedMessage;
+        const errMessage = JSON.stringify(sources) + ' ' + JSON.stringify(middlewareSource);
 
-        errMessage += ' ' + JSON.stringify(sources);
-        errMessage += ' ' + JSON.stringify(middlewareSource);
-        errMessage += ' ' + JSON.stringify(this.selectSource([middlewareSource]));
         // We need to wrap this in a timeout to give folks a chance to add error event handlers
         this.setTimeout(function() {
           this.error({ code: 4, message: this.localize(errMessage) });
